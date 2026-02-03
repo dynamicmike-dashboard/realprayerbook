@@ -139,7 +139,7 @@ const App: React.FC = () => {
                   {/* CORRECT AUTHOR ASSET: Louise with Impact Award */}
                   <div 
                     className="absolute inset-0 bg-cover bg-center transition-all duration-1000 group-hover:scale-110" 
-                    style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDBqDv8hTOPF3-eWYa9QDyDO1pe5AkZeMl0TXTbeRsgf-E-UkbYMZeTdbDYVro0sTEwBqRdXAvAcq7k0W04KqnLWggYkLAu89xrBFFiR-X-27XYxEvDsQS-sBVxnVa3T7I8ibDVjLm4cLquIM_5jY9aDAmT4W-VGBp2e42OoC5qjl8rvP7MpCmF1bh9ZgPxZ7SPyu5d-F2Bi-MuChZZsQzpjC-ylfSB2zYOpJowxLqvE5Ke-DsiiT2TjVAcg_hVVcNIr0gctXpG15U')" }}
+                    style={{ backgroundImage: "url('/assets/author.jpg')" }}
                   ></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-purple/95 via-transparent to-transparent"></div>
                   <div className="absolute bottom-12 left-12 right-12">
