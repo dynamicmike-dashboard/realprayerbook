@@ -89,32 +89,35 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick, onPrologueClick }) => {
         </div>
 
         {/* 3D Book / Author Visual */}
-        <div className="relative perspective-1000 flex justify-center mt-12 lg:mt-0">
-          {/* Mobile: Flex Column Layout to separate Image and Text completely */}
-          <div className="flex flex-col gap-8 w-full max-w-md lg:block">
-              
-              {/* Image Container */}
-              <div className="relative rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden aspect-[4/5] lg:aspect-[4/5.5] shadow-2xl border-4 border-white/20 group w-full">
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-all duration-1000 group-hover:scale-110" 
-                  style={{ backgroundImage: "url('/assets/book_cover.jpg')" }}
-                ></div>
-                {/* Gradient Only for desktop overlay effect, removed on mobile to show full image */}
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-purple/95 via-transparent to-transparent hidden lg:block"></div>
-              </div>
-
-              {/* Award Card - Relative block on Mobile (below image), Absolute Overlay on Desktop */}
-              <div className="relative lg:absolute lg:bottom-12 lg:left-12 lg:right-12 z-20">
-                <div className="bg-brand-obsidian/80 lg:bg-white/10 backdrop-blur-xl lg:backdrop-blur-3xl px-6 py-6 lg:px-12 lg:py-10 rounded-3xl lg:rounded-[3rem] shadow-2xl border border-white/10 lg:border-2 lg:border-white/30 text-center lg:text-left">
-                   <div className="flex items-center justify-center lg:justify-start gap-3 lg:gap-5 mb-3 lg:mb-4">
-                     <span className="material-symbols-outlined text-brand-gold text-3xl lg:text-4xl drop-shadow-lg">verified</span>
-                     <p className="text-white font-black uppercase tracking-[0.2em] lg:tracking-[0.4em] text-[10px] lg:text-xs">Transmitting Frequency</p>
-                   </div>
-                   <p className="text-white font-regal text-lg lg:text-3xl font-black italic leading-tight">"Outstanding Program Impact Award"</p>
-                </div>
-              </div>
-
+        <div className="relative perspective-1000 flex flex-col items-center justify-center mt-12 lg:mt-0">
+          
+          {/* Animated Book Container */}
+          <div ref={bookRef} className="relative w-[300px] h-[460px] preserve-3d mb-12 z-10">
+            <div className="absolute inset-0 rounded-r-lg shadow-[20px_20px_60px_rgba(0,0,0,0.5)] bg-brand-obsidian border-l-4 border-white/10">
+               <img 
+                 src="/assets/book_cover.jpg" 
+                 alt="Real Prayer Book Cover" 
+                 className="w-full h-full object-cover rounded-r-lg"
+               />
+               {/* Shine effect */}
+               <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent pointer-events-none rounded-r-lg mix-blend-overlay"></div>
+            </div>
           </div>
+          
+          {/* Floor Glow */}
+          <div className="absolute top-[400px] left-1/2 -translate-x-1/2 w-64 h-12 bg-brand-gold/30 blur-[60px] rounded-full -z-10"></div>
+
+          {/* Award Card - Positioned BELOW the book */}
+          <div className="relative z-20 max-w-sm mx-auto">
+            <div className="bg-brand-obsidian/80 lg:bg-white/10 backdrop-blur-xl lg:backdrop-blur-3xl px-6 py-6 rounded-3xl shadow-2xl border border-white/10 lg:border-2 lg:border-white/30 text-center">
+               <div className="flex items-center justify-center gap-3 mb-3">
+                 <span className="material-symbols-outlined text-brand-gold text-3xl drop-shadow-lg">verified</span>
+                 <p className="text-white font-black uppercase tracking-[0.2em] text-[10px]">Transmitting Frequency</p>
+               </div>
+               <p className="text-white font-regal text-xl font-black italic leading-tight">"Outstanding Program Impact Award"</p>
+            </div>
+          </div>
+
         </div>
 
       </div>

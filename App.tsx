@@ -179,8 +179,8 @@ const App: React.FC = () => {
           className="fixed bottom-12 right-12 z-50 flex items-center gap-6 bg-brand-gold text-brand-purple px-10 py-5 rounded-full shadow-[0_0_60px_rgba(212,175,55,0.6)] hover:scale-110 transition-all cursor-pointer group gold-glow"
           onClick={handleOpenLeadCapture}
         >
-          <span className="text-xs font-black uppercase tracking-[0.5em] hidden lg:block">Elite Assistant</span>
-          <span className="material-symbols-outlined text-3xl font-black">shield_person</span>
+          <span className="text-xs font-black uppercase tracking-[0.5em] hidden lg:block">Claim Your Divinity</span>
+          <span className="material-symbols-outlined text-3xl font-black">spa</span>
         </div>
       </div>
     </div>
