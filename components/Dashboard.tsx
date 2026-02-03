@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Quiz from './Quiz';
 
 interface DashboardProps {
   onJournalClick: () => void;
@@ -6,8 +7,12 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ onJournalClick, onLogout }) => {
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
+
   return (
     <div className="bg-[#1a1625] min-h-screen font-manrope text-slate-100 flex flex-col">
+      <Quiz isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
+
       {/* Top Navigation */}
       <header className="flex items-center justify-between border-b border-white/10 px-8 py-4 bg-white/5 backdrop-blur-xl sticky top-0 z-50">
         <div className="flex items-center gap-8">
@@ -26,169 +31,89 @@ const Dashboard: React.FC<DashboardProps> = ({ onJournalClick, onLogout }) => {
             <a className="text-white/70 hover:text-[#f4d125] text-sm font-medium transition-colors" href="#">Transmissions</a>
           </nav>
         </div>
-        <div className="flex items-center gap-6">
-          <div className="hidden lg:flex flex-col items-end mr-4">
-            <p className="text-white/50 text-[10px] uppercase tracking-widest font-bold">Global Circle In</p>
-            <div className="flex gap-2 text-[#f4d125] font-bold">
-              <span>05d</span>
-              <span>14h</span>
-              <span>22m</span>
-            </div>
-          </div>
-          <div className="flex gap-2">
-            <button className="flex items-center justify-center rounded-full size-10 bg-white/5 hover:bg-white/10 text-white transition-colors">
-              <span className="material-symbols-outlined">notifications</span>
-            </button>
-            <button onClick={onLogout} className="size-10 rounded-full border-2 border-[#f4d125]/50 overflow-hidden group">
-              <img className="w-full h-full object-cover transition-transform group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBqDv8hTOPF3-eWYa9QDyDO1pe5AkZeMl0TXTbeRsgf-E-UkbYMZeTdbDYVro0sTEwBqRdXAvAcq7k0W04KqnLWggYkLAu89xrBFFiR-X-27XYxEvDsQS-sBVxnVa3T7I8ibDVjLm4cLquIM_5jY9aDAmT4W-VGBp2e42OoC5qjl8rvP7MpCmF1bh9ZgPxZ7SPyu5d-F2Bi-MuChZZsQzpjC-ylfSB2zYOpJowxLqvE5Ke-DsiiT2TjVAcg_hVVcNIr0gctXpG15U" alt="Profile" />
-            </button>
-          </div>
-        </div>
+        <button onClick={onLogout} className="text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-colors">Logout</button>
       </header>
 
       <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar Navigation */}
-        <aside className="w-72 bg-white/5 border-r border-white/10 flex flex-col p-6 gap-8">
-          <div className="flex flex-col">
-            <h3 className="text-white/50 text-xs uppercase tracking-[0.2em] font-bold mb-4">Membership</h3>
-            <div className="space-y-2">
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#f4d125] text-[#1a1625] font-bold shadow-lg shadow-[#f4d125]/20 cursor-pointer">
-                <span className="material-symbols-outlined">auto_awesome</span>
-                <span className="text-sm">Daily Practice</span>
-              </div>
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl text-white/70 hover:bg-white/5 hover:text-white transition-all cursor-pointer">
-                <span className="material-symbols-outlined">book_4</span>
-                <span className="text-sm">22 Prayers Library</span>
-              </div>
-              <div onClick={onJournalClick} className="flex items-center gap-3 px-4 py-3 rounded-xl text-white/70 hover:bg-white/5 hover:text-white transition-all cursor-pointer">
-                <span className="material-symbols-outlined">menu_book</span>
-                <span className="text-sm">Coherence Journal</span>
-              </div>
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl text-white/70 hover:bg-white/5 hover:text-white transition-all cursor-pointer">
-                <span className="material-symbols-outlined">group</span>
-                <span className="text-sm">Community Circles</span>
-              </div>
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl text-white/70 hover:bg-white/5 hover:text-white transition-all cursor-pointer">
-                <span className="material-symbols-outlined">podcasts</span>
-                <span className="text-sm">Direct Transmissions</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mt-auto bg-white/5 p-4 rounded-2xl border border-[#f4d125]/10">
-            <p className="text-[10px] text-white/40 uppercase tracking-widest font-bold mb-3 text-center">7-Day Alignment Streak</p>
-            <div className="flex justify-center mb-2">
-              <div className="relative size-24 flex items-center justify-center">
-                <div className="absolute inset-0 border-2 border-white/5 rounded-full"></div>
-                <div className="absolute inset-0 border-2 border-[#f4d125] border-l-transparent border-b-transparent rounded-full rotate-45"></div>
-                <span className="material-symbols-outlined text-4xl text-[#f4d125]">local_florist</span>
-              </div>
-            </div>
-            <div className="flex justify-between text-[10px] text-white/40 font-bold px-2">
-              <span>M</span><span>T</span><span>W</span><span className="text-[#f4d125]">T</span><span>F</span><span>S</span><span>S</span>
-            </div>
-          </div>
-        </aside>
-
         {/* Main Content Area */}
         <main className="flex-1 overflow-y-auto p-8 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-[#1a1625] to-[#1a1625]">
           <div className="mb-10 flex flex-wrap justify-between items-end gap-4">
             <div className="space-y-1">
-              <h1 className="text-white text-5xl font-serif font-bold tracking-tight">Good Morning, Sarah</h1>
+              <h1 className="text-white text-5xl font-serif font-bold tracking-tight">Welcome to The Archive</h1>
               <div className="flex items-center gap-2">
                 <span className="flex h-2 w-2 rounded-full bg-[#f4d125] animate-pulse"></span>
-                <p className="text-[#f4d125]/80 text-sm font-medium uppercase tracking-widest">Current Frequency: Alignment High</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="bg-white/5 px-4 py-2 rounded-xl text-center min-w-[80px] border border-white/10">
-                <p className="text-white text-xl font-bold">05</p>
-                <p className="text-white/40 text-[10px] uppercase font-bold">Days</p>
-              </div>
-              <div className="bg-white/5 px-4 py-2 rounded-xl text-center min-w-[80px] border border-white/10">
-                <p className="text-white text-xl font-bold">14</p>
-                <p className="text-white/40 text-[10px] uppercase font-bold">Hours</p>
-              </div>
-              <div className="bg-white/5 px-4 py-2 rounded-xl text-center min-w-[80px] border border-[#f4d125]/40">
-                <p className="text-[#f4d125] text-xl font-bold">22</p>
-                <p className="text-white/40 text-[10px] uppercase font-bold">Mins</p>
+                <p className="text-[#f4d125]/80 text-sm font-medium uppercase tracking-widest">Access Granted</p>
               </div>
             </div>
           </div>
 
-          {/* Featured Daily Prayer Card */}
-          <div className="bg-white/5 border border-[#f4d125]/20 rounded-3xl overflow-hidden shadow-2xl mb-8">
-            <div className="flex flex-col lg:flex-row">
-              <div className="w-full lg:w-1/2 relative min-h-[350px]">
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-1000" 
-                  style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0FPOeN4Mi0jX4p9y06tkiKV2EsKJPIC8ca07M_0sh4tcc8k1BYiy9v6abE7ATX5JD6bbuV5IZt8HSJF7KXnDEIAC1tmRW48GPZroMId0xnqhZZPg-oZYyQ2VXbf3D6QJU4P4OVfiyKMA_S6a0przpJ0M9bZgcdX0_I-V_0COo-LO9Z5nPLTTz41PXrMITGE67ElwDTJcCkEAxP2jCUHdFZG3bTqFRz1ueNH4VlQSWrOzca-sA0ur-43-Qah-1KvgD5--M8d8BSds')" }}
-                ></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 flex items-center gap-4">
-                  <button className="size-20 rounded-full bg-[#f4d125] flex items-center justify-center text-[#1a1625] shadow-2xl hover:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-5xl fill-current">play_arrow</span>
-                  </button>
-                  <div>
-                    <p className="text-white text-xs font-bold uppercase tracking-widest opacity-70">Now Playing</p>
-                    <p className="text-white font-serif text-2xl">The Resonance of Stillness</p>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full lg:w-1/2 p-10 flex flex-col justify-between">
-                <div className="space-y-6">
-                  <span className="inline-block px-4 py-1 rounded-full bg-[#f4d125]/10 text-[#f4d125] text-[10px] font-bold uppercase tracking-widest border border-[#f4d125]/20">Prayer of the Day</span>
-                  <h2 className="text-white text-3xl font-serif font-bold">Heart Coherence Flow</h2>
-                  <p className="text-white/80 leading-relaxed italic">Guided by Dr. Louise</p>
-                  <p className="text-white/90 text-base leading-relaxed max-w-md">Today's practice focuses on expanding the toroidal field of the heart. Center your breath, visualize a golden light at the core of your chest, and align your frequency with collective peace.</p>
-                  <div className="space-y-3">
-                    <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                      <div className="bg-[#f4d125] h-full w-1/3 rounded-full"></div>
-                    </div>
-                    <div className="flex justify-between text-[10px] text-white/40 font-bold uppercase tracking-widest">
-                      <span>04:12</span>
-                      <span>12:00</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between mt-10">
-                  <div className="flex -space-x-3">
-                    {[20, 21, 22].map(i => (
-                      <div key={i} className="size-8 rounded-full border-2 border-[#1a1625] overflow-hidden">
-                        <img className="w-full h-full object-cover" src={`https://i.pravatar.cc/100?img=${i}`} alt="Avatar" />
-                      </div>
-                    ))}
-                    <div className="size-8 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-white/70 border-2 border-[#1a1625]">+82</div>
-                  </div>
-                  <button className="flex items-center gap-3 px-8 py-4 bg-[#f4d125] text-[#1a1625] rounded-xl font-bold text-sm shadow-xl transition-all hover:brightness-110 active:scale-95">
-                    <span className="material-symbols-outlined text-lg">check_circle</span>
-                    <span>Mark as Aligned</span>
-                  </button>
-                </div>
-              </div>
+          {/* New Grid Layout for Download & Quiz */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            
+            {/* Download Card */}
+            <div className="bg-white/5 border border-[#f4d125]/20 rounded-3xl p-10 flex flex-col justify-between relative overflow-hidden group">
+               <div className="absolute inset-0 bg-gradient-to-br from-[#f4d125]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+               <div className="relative z-10">
+                 <div className="flex items-center gap-4 mb-6">
+                   <span className="material-symbols-outlined text-5xl text-[#f4d125]">book_5</span>
+                   <div>
+                     <h2 className="text-3xl font-serif font-bold text-white">The Digital Archive</h2>
+                     <p className="text-white/50 text-sm uppercase tracking-widest font-bold">PDF Edition</p>
+                   </div>
+                 </div>
+                 <p className="text-white/80 leading-relaxed mb-8">
+                   Your complete guide to frequency alignment. Download the full manuscript to begin your study of the 22 Prayers.
+                 </p>
+               </div>
+               <a 
+                 href="/assets/RealPrayerBook..pdf" 
+                 download="RealPrayerBook_DrLouise.pdf"
+                 className="relative z-10 w-full bg-[#f4d125] text-[#1a1625] py-4 rounded-xl font-bold uppercase tracking-widest text-center shadow-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-3"
+               >
+                 <span className="material-symbols-outlined">download</span>
+                 Download PDF
+               </a>
             </div>
+
+            {/* Quiz Card */}
+            <div className="bg-[#2E1A47] border border-white/10 rounded-3xl p-10 flex flex-col justify-between relative overflow-hidden group">
+               <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-40 transition-opacity">
+                 <span className="material-symbols-outlined text-9xl text-[#f4d125]">psychology</span>
+               </div>
+               <div className="relative z-10">
+                 <div className="flex items-center gap-4 mb-6">
+                   <div className="size-12 rounded-full border-2 border-[#f4d125] flex items-center justify-center text-[#f4d125]">
+                     <span className="material-symbols-outlined text-2xl">graphic_eq</span>
+                   </div>
+                   <div>
+                     <h2 className="text-3xl font-serif font-bold text-white">Frequency Audit</h2>
+                     <p className="text-white/50 text-sm uppercase tracking-widest font-bold">Interactive Tool</p>
+                   </div>
+                 </div>
+                 <p className="text-white/80 leading-relaxed mb-8">
+                   Are you "Begging" or "Aligning"? Take this assessment to discover your current prayer frequency and get a tailored practice.
+                 </p>
+               </div>
+               <button 
+                 onClick={() => setIsQuizOpen(true)}
+                 className="relative z-10 w-full border-2 border-white/20 text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-white hover:text-[#1a1625] transition-all flex items-center justify-center gap-3"
+               >
+                 <span className="material-symbols-outlined">play_arrow</span>
+                 Start Audit
+               </button>
+            </div>
+
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div onClick={onJournalClick} className="bg-white/5 border border-white/10 p-6 rounded-2xl space-y-4 hover:border-[#f4d125]/40 transition-all group cursor-pointer">
               <span className="material-symbols-outlined text-4xl text-[#f4d125]/60 group-hover:text-[#f4d125]">history_edu</span>
-              <h4 className="text-white font-bold text-lg">Morning Reflection</h4>
-              <p className="text-white/60 text-sm">You haven't recorded your coherence levels today.</p>
+              <h4 className="text-white font-bold text-lg">Coherence Journal</h4>
+              <p className="text-white/60 text-sm">Record your shifts and alignments.</p>
               <button className="text-[#f4d125] text-xs font-bold uppercase tracking-widest flex items-center gap-2 pt-2">Write Now <span className="material-symbols-outlined text-sm">arrow_forward</span></button>
             </div>
-            <div className="bg-white/5 border border-white/10 p-6 rounded-2xl space-y-4 hover:border-[#f4d125]/40 transition-all group cursor-pointer">
-              <span className="material-symbols-outlined text-4xl text-[#f4d125]/60 group-hover:text-[#f4d125]">diversity_1</span>
-              <h4 className="text-white font-bold text-lg">Sacred Geometry Study</h4>
-              <p className="text-white/60 text-sm">Next meeting: Tomorrow, 10:00 AM PST</p>
-              <button className="text-[#f4d125] text-xs font-bold uppercase tracking-widest flex items-center gap-2 pt-2">RSVP <span className="material-symbols-outlined text-sm">arrow_forward</span></button>
-            </div>
-            <div className="bg-[#f4d125]/5 border border-[#f4d125]/30 p-6 rounded-2xl space-y-4 relative overflow-hidden">
-              <div className="absolute top-3 right-3 h-2 w-2 rounded-full bg-[#f4d125] animate-pulse"></div>
-              <span className="material-symbols-outlined text-4xl text-[#f4d125]">broadcast_on_personal</span>
-              <h4 className="text-white font-bold text-lg">Direct Transmission</h4>
-              <p className="text-white/60 text-sm">Dr. Louise is sharing insights on the Feb 8th Alignment.</p>
-              <button className="bg-[#f4d125] text-[#1a1625] px-6 py-2 rounded-lg text-xs font-bold uppercase tracking-widest mt-2">Join Live</button>
-            </div>
+            
+            {/* Additional cards or spacers can go here */}
           </div>
         </main>
       </div>
