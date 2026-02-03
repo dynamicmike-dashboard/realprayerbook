@@ -24,19 +24,29 @@ const PrologueModal: React.FC<PrologueModalProps> = ({ isOpen, onClose }) => {
 
         <div className="prose prose-invert prose-lg max-w-none text-white/80 font-light leading-relaxed space-y-6">
           <p>
-            <span className="text-brand-gold font-regal text-4xl float-left mr-2 mt-[-10px]">P</span>
-            rayer is not a passive request sent into the void; it is a resonant command that aligns the human frequency with the unified field of creation. 
-            For centuries, we have been taught to beg, to hope, and to wait. But the universe does not respond to desperation—it responds to vibration.
+            <span className="text-brand-gold font-regal text-4xl float-left mr-2 mt-[-10px]">T</span>
+            his is not a religious text, nor is it a soft comfort blanket; it is a 'living transmission' designed to work functionally when everything else has failed. 
+            Born from the fires of 'Earth School' and decades of guiding leaders through crisis, this book strips away the 'middlemen' of modern spirituality to restore your direct, unmediated connection to Source.
           </p>
           <p>
-            This archive is not just a book. It is a transmission. A manual for the sovereign soul who is ready to stop asking for permission and start 
-            embodying the power that was theirs all along.
+            You will stop begging and start aligning, learning to use prayer not as a superstition, but as a 'mechanical reality' and precise instruction that an intelligent system actually obeys. 
+            If you are ready to bypass the noise and command your reality with 'unshakable coherence,' this is your manual for graduating from life’s hardest tests.
           </p>
+          
+          <h4 className="text-brand-gold font-regal text-xl mt-8 mb-4">Command Your Reality</h4>
+          <p>
+            Most people fail at prayer because they speak from fear. They approach the divine as beggars, signaling lack and fragmentation to the unified field. 
+            <strong>Real Prayer</strong> teaches you to bypass this "stabilized interference" and enter direct communion with Source.
+          </p>
+
+          <p>
+            Through the laws of <em>Earth School</em>, you will learn that crises are not punishments but "graduation events"—pressure tests designed 
+            to expand your capacity for power. By regulating your nervous system and clearing the "parasitic overlays" of false gurus, you reclaim your 
+            divine authority.
+          </p>
+
           <p className="italic text-white/60 text-center py-4 border-y border-white/10 my-8">
-            "Your reality is waiting for your command."
-          </p>
-          <p>
-            [NotebookLM Prologue Content will be inserted here...]
+            "Stop begging for miracles. Learn the science of alignment, and watch reality reorganize itself around your command."
           </p>
         </div>
 
