@@ -97,7 +97,7 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick, onPrologueClick }) => {
               <div className="relative rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden aspect-[4/5] lg:aspect-[4/5.5] shadow-2xl border-4 border-white/20 group w-full">
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-all duration-1000 group-hover:scale-110" 
-                  style={{ backgroundImage: "url('/assets/author.jpg')" }}
+                  style={{ backgroundImage: "url('/assets/book_cover.jpg')" }}
                 ></div>
                 {/* Gradient Only for desktop overlay effect, removed on mobile to show full image */}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-purple/95 via-transparent to-transparent hidden lg:block"></div>

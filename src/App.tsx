@@ -146,22 +146,25 @@ const App: React.FC = () => {
               </div>
               <div className="order-1 lg:order-2 relative reveal-section mt-12 lg:mt-0">
                 <div className="absolute -inset-10 border-4 border-brand-gold/20 rounded-[4rem] rotate-3 blur-md opacity-50 hidden lg:block"></div>
-                <div className="relative rounded-[3rem] lg:rounded-[4rem] overflow-hidden aspect-[4/5.5] shadow-[0_0_120px_rgba(0,0,0,1)] border-4 border-white/20 group">
-                  {/* CORRECT AUTHOR ASSET: Louise with Impact Award */}
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center transition-all duration-1000 group-hover:scale-110" 
-                    style={{ backgroundImage: "url('/assets/author.jpg')" }}
-                  ></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-purple/95 via-transparent to-transparent lg:hidden"></div>
+                
+                {/* Mobile: Flex Column to stack Image + Card */}
+                <div className="flex flex-col gap-8 lg:block">
+                  <div className="relative rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden aspect-[4/5.5] shadow-[0_0_120px_rgba(0,0,0,1)] border-4 border-white/20 group w-full">
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-all duration-1000 group-hover:scale-110" 
+                      style={{ backgroundImage: "url('/assets/author.jpg')" }}
+                    ></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-purple/95 via-transparent to-transparent hidden lg:block"></div>
+                  </div>
                   
-                  {/* Desktop: Overlay / Mobile: Stacked below (layout handled by grid/flex parent if needed, but here adjusting absolute pos) */}
-                  <div className="absolute -bottom-1 left-0 right-0 lg:bottom-12 lg:left-12 lg:right-12 p-6 lg:p-0">
-                    <div className="bg-brand-obsidian/80 lg:bg-white/10 backdrop-blur-xl lg:backdrop-blur-3xl px-8 py-8 lg:px-12 lg:py-10 rounded-[2rem] lg:rounded-[3rem] shadow-2xl border border-white/10 lg:border-2 lg:border-white/30">
-                       <div className="flex items-center gap-4 lg:gap-5 mb-2 lg:mb-4">
+                  {/* Award Card - Relative on Mobile (below), Absolute on Desktop */}
+                  <div className="relative lg:absolute lg:bottom-12 lg:left-12 lg:right-12 z-20">
+                    <div className="bg-brand-obsidian/80 lg:bg-white/10 backdrop-blur-xl lg:backdrop-blur-3xl px-6 py-6 lg:px-12 lg:py-10 rounded-3xl lg:rounded-[3rem] shadow-2xl border border-white/10 lg:border-2 lg:border-white/30 text-center lg:text-left">
+                       <div className="flex items-center justify-center lg:justify-start gap-3 lg:gap-5 mb-3 lg:mb-4">
                          <span className="material-symbols-outlined text-brand-gold text-3xl lg:text-4xl drop-shadow-lg">verified</span>
-                         <p className="text-white font-black uppercase tracking-[0.4em] text-[10px] lg:text-xs">Transmitting Frequency</p>
+                         <p className="text-white font-black uppercase tracking-[0.2em] lg:tracking-[0.4em] text-[10px] lg:text-xs">Transmitting Frequency</p>
                        </div>
-                       <p className="text-white font-regal text-xl lg:text-3xl font-black italic">"Outstanding Program Impact Award"</p>
+                       <p className="text-white font-regal text-lg lg:text-3xl font-black italic leading-tight">"Outstanding Program Impact Award"</p>
                     </div>
                   </div>
                 </div>
