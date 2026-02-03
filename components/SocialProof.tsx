@@ -3,34 +3,34 @@ import React from 'react';
 const SocialProof: React.FC = () => {
   const testimonials = [
     {
-      quote: "Real Prayer moved me in ways I didn't think possible. It's more than a book; it's a soft landing for the soul.",
-      author: "James Miller",
-      role: "Wellness Practitioner",
-      img: "11"
+      quote: "A testament that this stuff, whether we believe it or not, is real.",
+      author: "John Vowels",
+      role: "Acknowledgment",
+      img: "1" // Placeholder, will use generic or need specific assets
     },
     {
-      quote: "Louise has a way of translating the infinite into something so accessible. A masterclass in spiritual intimacy.",
-      author: "Sarah Williams",
-      role: "Author",
-      img: "12"
+      quote: "Learning truth wins and is never wrong.",
+      author: "Mr. Hennesy",
+      role: "Acknowledgment",
+      img: "2"
     },
     {
-      quote: "I've read many books on spirituality, but none have felt this grounded and real. The lotus motif truly represents the growth I've experienced.",
-      author: "Marcus Thorne",
-      role: "Seeker",
-      img: "13"
+      quote: "Resonates on the same truth this book comes from. Flows with powerful codes.",
+      author: "Dr. Samuel Lee",
+      role: "Medical Professional",
+      img: "3"
     },
     {
-      quote: "I finally understood that the pressure I was feeling wasn't a punishment, but a 'graduation event' designed to expand my capacity.",
-      author: "Elena R.",
-      role: "CEO & Founder",
-      img: "14"
+      quote: "Living proof that prayers are answered.",
+      author: "Chloe & Jordan",
+      role: "The Living Proof",
+      img: "4"
     },
     {
-      quote: "This book cuts through the noise. It explains the mechanics of why prayer works—not as magic, but as instruction entering an intelligent system.",
-      author: "David K.",
-      role: "Truth Seeker",
-      img: "15"
+      quote: "Through the guidance of prayer... her crippling pain vanished.",
+      author: "Adele Mercer",
+      role: "The Author's Mother",
+      img: "5"
     }
   ];
 

@@ -46,9 +46,9 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick, onPrologueClick }) => {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative min-h-screen pt-32 pb-20 flex items-center justify-center overflow-hidden">
+    <section ref={containerRef} className="relative min-h-screen pt-40 lg:pt-32 pb-20 flex items-center justify-center">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-purple/50 via-brand-obsidian to-brand-obsidian z-0"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-purple/50 via-brand-obsidian to-brand-obsidian z-0 overflow-hidden"></div>
       
       <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
         

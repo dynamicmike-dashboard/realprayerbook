@@ -88,10 +88,10 @@ const DonationUI: React.FC<DonationUIProps> = ({ onComplete }) => {
             <div className="absolute left-0 h-full bg-brand-gold rounded-full" style={{ width: `${(amount/250)*100}%` }}></div>
           </div>
           
-          <div className="flex justify-between mt-10 text-[9px] lg:text-[11px] font-black text-white uppercase tracking-[0.2em] lg:tracking-[0.4em]">
+          <div className="flex justify-between mt-10 text-[9px] md:text-[11px] font-black text-white uppercase tracking-normal lg:tracking-[0.4em]">
             <span className="opacity-60 text-left w-1/3">Supporter</span>
             <span className={`text-center w-1/3 transition-transform ${isPhysical ? 'text-brand-gold scale-110' : 'opacity-40'}`}>
-              <span className="block lg:inline">Physical</span> <span className="block lg:inline">Bound</span>
+              <span className="block md:inline">Physical</span> <span className="block md:inline">Bound</span>
             </span>
             <span className="opacity-60 text-right w-1/3">Patron</span>
           </div>
