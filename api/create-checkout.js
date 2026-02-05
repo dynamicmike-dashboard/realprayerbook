@@ -1,7 +1,6 @@
-
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2023-10-16',
 });
 
@@ -17,37 +16,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    const lineItems = [
-        {
-            price_data: {
-                currency: 'eur',
-                product_data: {
-                    name: 'Real Prayer Contribution',
-                    description: isPhysical ? 'Includes Physical Book + Membership' : 'Digital Archive Only',
-                },
-                unit_amount: Math.round(amount * 100), // Convert to cents
-            },
-            quantity: 1,
-        }
-    ];
+    const SUBSCRIPTION_PRICE_ID = 'price_1SxZRDIExvrU7SroGdH1j0ij'; 
 
-    let sessionParams: any = {
-      payment_method_types: ['card'],
-      line_items: lineItems,
-      mode: 'payment', // Default to payment for just donation
-      success_url: `${req.headers.origin}/subscription-success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.origin}/`,
-    };
-
-    // If subscription is required (all donations get enrolled after 30 days per user request)
-    // To do hybrid (one-time + subscription), we use 'subscription' mode with 'add_invoice_items' or 'setup_future_usage'?
-    // Actually, Stripe Checkout allows 'subscription' mode to have one-time items too.
-    // BUT we want a trial period of 30 days for the subscription.
-
-    const SUBSCRIPTION_PRICE_ID = 'price_1SxZRDIExvrU7SroGdH1j0ij'; // Provided by user
-
-    // Hybrid flow: Subscription with trial + One-time fee
-    sessionParams = {
+    let sessionParams = {
         payment_method_types: ['card'],
         line_items: [
             // The One-Time Donation
@@ -68,9 +39,9 @@ export default async function handler(req, res) {
                 quantity: 1,
             }
         ],
-        mode: 'subscription', // Must be subscription if any item is recurring
+        mode: 'subscription', 
         subscription_data: {
-            trial_period_days: 30, // Delay first subscription charge by 30 days
+            trial_period_days: 30, 
         },
         success_url: `${req.headers.origin}/?payment_success=true`,
         cancel_url: `${req.headers.origin}/?payment_cancelled=true`,
