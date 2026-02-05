@@ -67,6 +67,11 @@ const DonationUI: React.FC<DonationUIProps> = ({ onComplete }) => {
             }),
         });
 
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`HTTP ${response.status}: ${response.statusText || errorText}`);
+        }
+
         const data = await response.json();
 
         if (data.url) {
@@ -78,9 +83,9 @@ const DonationUI: React.FC<DonationUIProps> = ({ onComplete }) => {
             setIsSubmitting(false);
         }
 
-    } catch (error) {
+    } catch (error: any) {
         console.error(error);
-        alert('There was an issue processing your request. Please try again.');
+        alert(`Error: ${error.message || 'There was an issue processing your request.'}`);
         setIsSubmitting(false);
     }
   };
